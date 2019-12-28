@@ -3,17 +3,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * An AVL tree is a self-balancing binary search tree, and it was the first such
- * data structure to be invented. In an AVL tree, the heights of the two child
- * subtrees of any node differ by at most one. AVL trees are often compared with
- * red-black trees because they support the same set of operations and because
- * red-black trees also take O(log n) time for the basic operations. Because AVL
- * trees are more rigidly balanced, they are faster than red-black trees for
- * lookup intensive applications. However, red-black trees are faster for
- * insertion and removal.
- * <p>
- * @see <a href="https://en.wikipedia.org/wiki/AVL_tree">AVL Tree (Wikipedia)</a>
- * <br>
+ * Un arbre AVL est un arbre de recherche binaire auto-équilibré,
+ * et c'est la première structure de données de ce type à avoir été inventée.
+ * Dans un arbre AVL, les hauteurs des deux sous-arbres enfants
+ * de n'importe quel nœud diffèrent d'au plus un. Les arbres AVL sont souvent
+ * comparés aux arbres rouge-noir parce qu'ils supportent le même ensemble
+ * d'opérations et parce que les arbres rouge-noir prennent également O(log n)
+ * de temps pour les opérations de base. Les arbres AVL étant plus rigidement équilibrés,
+ * ils sont plus rapides que les arbres rouge-noir pour les applications de recherche intensive.
+ * Cependant, les arbres rouge-noir sont plus rapides pour les l'insertion et le retrait.
+ *
  * @author Justin Wetherell <phishman3579@gmail.com>
  */
 public class AVLTree<T extends Comparable<T>> extends BinarySearchTree<T> {

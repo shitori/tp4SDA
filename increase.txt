@@ -1,0 +1,1 @@
+plot [0:1000000][0:5000]'avlTimeI.plot' using 1:3 w lines title "AVLTree",'bTimeI.plot' using 1:3 w lines title "BTree_neutral",'bTimeI_3.plot' using 1:3 w lines title "BTree3",'bTimeI_4.plot' using 1:3 w lines title "BTree4",'bTimeI_5.plot' using 1:3 w lines title "BTree5",'bTimeI_50.plot' using 1:3 w lines title "BTree50"
