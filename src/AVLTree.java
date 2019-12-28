@@ -48,19 +48,19 @@ public class AVLTree<T extends Comparable<T>> extends BinarySearchTree<T> {
      */
     @Override
     protected Node<T> addValue(T id) {
-        Node<T> nodeToReturn = super.addValue(id);
+        Node<T> nodeToReturn = super.addValue(id); //cette fonction parcours l'arbre jusqu'a trouver une feuille qui respectre les conditions d'un bst
         AVLNode<T> nodeAdded = (AVLNode<T>) nodeToReturn;
-        nodeAdded.updateHeight();
-        balanceAfterInsert(nodeAdded);
+        nodeAdded.updateHeight();// on modifie les poids de chaque noeud
+        balanceAfterInsert(nodeAdded); // on rebalance l'arbre afin qu'il soit équilibre
 
         nodeAdded = (AVLNode<T>) nodeAdded.parent;
-        while (nodeAdded != null) {
+        while (nodeAdded != null) { // on repete l'étape pour l'arbre soit entierement équilibré
             int h1 = nodeAdded.height;
 
             nodeAdded.updateHeight();
             balanceAfterInsert(nodeAdded);
 
-            // If height before and after balance is the same, stop going up the tree
+            // Si la hauteur avant et après l'équilibre est la même, on arrete de monter dans l'arbre
             int h2 = nodeAdded.height;
             if (h1==h2)
                 break;
@@ -71,10 +71,7 @@ public class AVLTree<T extends Comparable<T>> extends BinarySearchTree<T> {
     }
 
     /**
-     * Balance the tree according to the AVL post-insert algorithm.
-     * 
-     * @param node
-     *            Root of tree to balance.
+     * fonction qui équilibre l'arbre selon l'algorithme de post-insertion AVL.
      */
     private void balanceAfterInsert(AVLNode<T> node) {
         int balanceFactor = node.getBalanceFactor();
@@ -119,19 +116,20 @@ public class AVLTree<T extends Comparable<T>> extends BinarySearchTree<T> {
     }
 
     /**
+     * Fonction utilisé lors de l'extraction d'une valeur
      * {@inheritDoc}
      */
     @Override
     protected Node<T> removeValue(T value) {
-        // Find node to remove
+        // on recherche la valeur voir si elle existe
         Node<T> nodeToRemoved = this.getNode(value);
         if (nodeToRemoved==null)
             return null;
 
-        // Find the replacement node
+        // on recherche le noeud de remplacement
         Node<T> replacementNode = this.getReplacementNode(nodeToRemoved);
 
-        // Find the parent of the replacement node to re-factor the height/balance of the tree
+        // on cherche le parent du noeud précedent afin d'équilibrer l'arbre
         AVLNode<T> nodeToRefactor = null;
         if (replacementNode != null)
             nodeToRefactor = (AVLNode<T>) replacementNode.parent;
@@ -140,10 +138,10 @@ public class AVLTree<T extends Comparable<T>> extends BinarySearchTree<T> {
         if (nodeToRefactor != null && nodeToRefactor == nodeToRemoved)
             nodeToRefactor = (AVLNode<T>) replacementNode;
 
-        // Replace the node
+        // on remplace les noeuds
         replaceNodeWithNode(nodeToRemoved, replacementNode);
 
-        // Re-balance the tree all the way up the tree
+        // on rééquilibre jusqu'à la racine
         while (nodeToRefactor != null) {
             nodeToRefactor.updateHeight();
             balanceAfterDelete(nodeToRefactor);
@@ -155,10 +153,9 @@ public class AVLTree<T extends Comparable<T>> extends BinarySearchTree<T> {
     }
 
     /**
-     * Balance the tree according to the AVL post-delete algorithm.
+     * fonction qui équilibre l'arbre selon l'algorithme de post-suppression AVL.
      * 
      * @param node
-     *            Root of tree to balance.
      */
     private void balanceAfterDelete(AVLNode<T> node) {
         int balanceFactor = node.getBalanceFactor();
@@ -270,16 +267,15 @@ public class AVLTree<T extends Comparable<T>> extends BinarySearchTree<T> {
         }
 
         /**
-         * Determines is this node is a leaf (has no children).
-         * 
-         * @return True if this node is a leaf.
+         *
+         * @return Vrai si ce noeud est une feuille.
          */
         protected boolean isLeaf() {
             return ((lesser == null) && (greater == null));
         }
 
         /**
-         * Updates the height of this node based on it's children.
+         * Met à jour la hauteur de ce noeud en fonction de ses enfants.
          */
         protected int updateHeight() {
             int lesserHeight = 0;
@@ -302,11 +298,10 @@ public class AVLTree<T extends Comparable<T>> extends BinarySearchTree<T> {
         }
 
         /**
-         * Get the balance factor for this node.
-         * 
-         * @return An integer representing the balance factor for this node. It
-         *         will be negative if the lesser branch is longer than the
-         *         greater branch.
+         * @return Un entier représentant le facteur
+         * d'équilibre pour ce nœud. Il sera négatif
+         * si la branche inférieure est plus longue
+         * que la branche supérieure.
          */
         protected int getBalanceFactor() {
             int lesserHeight = 0;

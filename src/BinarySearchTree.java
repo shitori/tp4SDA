@@ -12,15 +12,18 @@ import java.util.Set;
 import interfaces.ITree;
 
 /**
- * A binary search tree (BST), which may sometimes also be called an ordered or
- * sorted binary tree, is a node-based binary tree data structure which has the
- * following properties: 1) The left subtree of a node contains only nodes with
- * keys less than the node's key. 2) The right subtree of a node contains only
- * nodes with keys greater than the node's key. 3) Both the left and right
- * subtrees must also be binary search trees.
- * <p>
- * @see <a href="https://en.wikipedia.org/wiki/Binary_search_tree">Binary Search Tree (Wikipedia)</a>
- * <br>
+ * Un arbre de recherche binaire (BST),
+ * que l'on peut aussi parfois appeler arbre binaire ordonné ou trié,
+ * est une structure de données en arbre binaire basée sur des nœuds
+ * qui a les propriétés suivantes :
+ * 1) Le sous-arbre gauche d'un nœud ne contient que les nœuds dont
+ * la clé est inférieure à celle du nœud.
+ * 2) Le sous-arbre de droite d'un nœud ne contient que les nœuds dont
+ * les clés sont supérieures à celle du nœud.
+ * 3) Les sous-arbres de gauche et de droite doivent
+ * également être des arbres de recherche binaires.
+ *
+ * Traduit avec www.DeepL.com/Translator (version gratuite)
  * @author Justin Wetherell <phishman3579@gmail.com>
  */
 @SuppressWarnings("unchecked")
@@ -70,8 +73,8 @@ public class BinarySearchTree<T extends Comparable<T>> implements ITree<T> {
     }
 
     /**
-     * Add value to the tree and return the Node that was added. Tree can
-     * contain multiple equal values.
+     * Ajouter une valeur à l'arbre et retourner le nœud qui a été ajouté.
+     * L'arbre peut contenir plusieurs valeurs égales.
      * 
      * @param value
      *            T to add to the tree.
@@ -125,12 +128,11 @@ public class BinarySearchTree<T extends Comparable<T>> implements ITree<T> {
     }
 
     /**
-     * Locate T in the tree.
+     * Localisez T dans l'arbre.
      * 
      * @param value
-     *            T to locate in the tree.
-     * @return Node<T> representing first reference of value in tree or NULL if
-     *         not found.
+     * @return Node<T> représentant la première référence de la valeur
+     * dans l'arbre ou NULL si non trouvé.
      */
     protected Node<T> getNode(T value) {
         Node<T> node = root;
@@ -147,10 +149,10 @@ public class BinarySearchTree<T extends Comparable<T>> implements ITree<T> {
     }
 
     /**
-     * Rotate tree left at sub-tree rooted at node.
+     * Faire pivoter l'arbre à gauche au niveau du sous-arbre enraciné au nœud.
      * 
      * @param node
-     *            Root of tree to rotate left.
+     *            Racine de l'arbre à tourner à gauche.
      */
     protected void rotateLeft(Node<T> node) {
         Node<T> parent = node.parent;
@@ -181,10 +183,10 @@ public class BinarySearchTree<T extends Comparable<T>> implements ITree<T> {
     }
 
     /**
-     * Rotate tree right at sub-tree rooted at node.
+     * Faire pivoter l'arbre à droite au niveau du sous-arbre enraciné au nœud.
      * 
      * @param node
-     *            Root of tree to rotate right.
+     *            Racine de l'arbre à tourner à droite.
      */
     protected void rotateRight(Node<T> node) {
         Node<T> parent = node.parent;
@@ -215,13 +217,13 @@ public class BinarySearchTree<T extends Comparable<T>> implements ITree<T> {
     }
 
     /**
-     * Get greatest node in sub-tree rooted at startingNode. The search does not
-     * include startingNode in it's results.
+     * la fonction permet d'obtenir le plus grand noeud dans la sous-arborescence enracinée
+     * au StartingNode. La recherche n'inclut pas le StartingNode dans ses résultats.
      * 
      * @param startingNode
      *            Root of tree to search.
-     * @return Node<T> which represents the greatest node in the startingNode
-     *         sub-tree or NULL if startingNode has no greater children.
+     * @return Node<T> qui représente le plus grand nœud dans la sous-arborescence startingNode
+     * ou NULL si startingNode n'a pas de plus grand enfant.
      */
     protected Node<T> getGreatest(Node<T> startingNode) {
         if (startingNode == null)
@@ -239,13 +241,13 @@ public class BinarySearchTree<T extends Comparable<T>> implements ITree<T> {
     }
 
     /**
-     * Get least node in sub-tree rooted at startingNode. The search does not
-     * include startingNode in it's results.
+     * la fonction permet d'obtenir le moins de noeud dans la sous-arborescence enraciné
+     * au startingNode. La recherche n'inclut pas le startingNode dans ses résultats.
      * 
      * @param startingNode
      *            Root of tree to search.
-     * @return Node<T> which represents the least node in the startingNode
-     *         sub-tree or NULL if startingNode has no lesser children.
+     * @return Node<T> qui représente le plus petit noeud dans la sous-arborescence du startingNode
+     * ou NULL si le startingNode n'a pas de plus petits enfants.
      */
     protected Node<T> getLeast(Node<T> startingNode) {
         if (startingNode == null)
@@ -272,11 +274,11 @@ public class BinarySearchTree<T extends Comparable<T>> implements ITree<T> {
     }
 
     /**
-     * Remove first occurrence of value in the tree.
+     * Supprimer la première occurrence de la valeur dans l'arbre.
      * 
      * @param value
      *            T to remove from the tree.
-     * @return Node<T> which was removed from the tree.
+     * @return Node<T> qui a été retiré de l'arbre.
      */
     protected Node<T> removeValue(T value) {
         Node<T> nodeToRemoved = this.getNode(value);
@@ -286,13 +288,13 @@ public class BinarySearchTree<T extends Comparable<T>> implements ITree<T> {
     }
 
     /**
-     * Remove the node using a replacement
+     * Retirez le nœud à l'aide d'un remplacement
      * 
      * @param nodeToRemoved
-     *            Node<T> to remove from the tree.
+     *            Node<T> à retirer de l'arbre.
      * @return nodeRemove
-     *            Node<T> removed from the tree, it can be different
-     *            then the parameter in some cases.
+     *            Node<T> retiré de l'arbre,
+     *            il peut être différent du paramètre dans certains cas.
      */
     protected Node<T> removeNode(Node<T> nodeToRemoved) {
         if (nodeToRemoved != null) {
@@ -303,20 +305,21 @@ public class BinarySearchTree<T extends Comparable<T>> implements ITree<T> {
     }
 
     /**
-     * Get the proper replacement node according to the binary search tree
-     * algorithm from the tree.
+     * la fonction permet d'obtenir le bon nœud de remplacement selon
+     * l'algorithme de l'arbre de recherche binaire de l'arbre.
      * 
      * @param nodeToRemoved
-     *            Node<T> to find a replacement for.
-     * @return Node<T> which can be used to replace nodeToRemoved. nodeToRemoved
-     *         should NOT be NULL.
+     *            Node<T> pour trouver un remplaçant.
+     * @return Node<T> qui peut être utilisé pour remplacer nodeToRemoved.
+     * nodeToRemoved ne doit PAS être NULL.
      */
     protected Node<T> getReplacementNode(Node<T> nodeToRemoved) {
         Node<T> replacement = null;
         if (nodeToRemoved.greater != null && nodeToRemoved.lesser != null) {
-            // Two children.
-            // Add some randomness to deletions, so we don't always use the
-            // greatest/least on deletion
+            // Deux enfants.
+            // Ajoutez un peu d'aléatoire aux suppressions,
+            // ainsi nous n'utilisons pas toujours le plus grand/le
+            // moins grand sur la suppression
             if (modifications % 2 != 0) {
                 replacement = this.getGreatest(nodeToRemoved.lesser);
                 if (replacement == null)
@@ -328,32 +331,27 @@ public class BinarySearchTree<T extends Comparable<T>> implements ITree<T> {
             }
             modifications++;
         } else if (nodeToRemoved.lesser != null && nodeToRemoved.greater == null) {
-            // Using the less subtree
             replacement = nodeToRemoved.lesser;
         } else if (nodeToRemoved.greater != null && nodeToRemoved.lesser == null) {
-            // Using the greater subtree (there is no lesser subtree, no refactoring)
             replacement = nodeToRemoved.greater;
         }
         return replacement;
     }
 
     /**
-     * Replace nodeToRemoved with replacementNode in the tree.
+     * La fonction remplace nodeToRemoved par replacementNode dans l'arborescence.
      * 
      * @param nodeToRemoved
-     *            Node<T> to remove replace in the tree. nodeToRemoved should
-     *            NOT be NULL.
+     *
      * @param replacementNode
-     *            Node<T> to replace nodeToRemoved in the tree. replacementNode
-     *            can be NULL.
      */
     protected void replaceNodeWithNode(Node<T> nodeToRemoved, Node<T> replacementNode) {
         if (replacementNode != null) {
-            // Save for later
+            // Sauvegarde pour plus tard
             Node<T> replacementNodeLesser = replacementNode.lesser;
             Node<T> replacementNodeGreater = replacementNode.greater;
 
-            // Replace replacementNode's branches with nodeToRemove's branches
+            // Remplace les branches de remplacementNode par les branches de remplacementToRemove
             Node<T> nodeToRemoveLesser = nodeToRemoved.lesser;
             if (nodeToRemoveLesser != null && nodeToRemoveLesser != replacementNode) {
                 replacementNode.lesser = nodeToRemoveLesser;
@@ -365,7 +363,7 @@ public class BinarySearchTree<T extends Comparable<T>> implements ITree<T> {
                 nodeToRemoveGreater.parent = replacementNode;
             }
 
-            // Remove link from replacementNode's parent to replacement
+            // Supprime le lien du parent du nœud de remplacement vers le remplacement
             Node<T> replacementParent = replacementNode.parent;
             if (replacementParent != null && replacementParent != nodeToRemoved) {
                 Node<T> replacementParentLesser = replacementParent.lesser;
@@ -382,11 +380,10 @@ public class BinarySearchTree<T extends Comparable<T>> implements ITree<T> {
             }
         }
 
-        // Update the link in the tree from the nodeToRemoved to the
-        // replacementNode
+        // Met à jour le lien dans l'arborescence du nœudToRemoved vers le nœud replacementNode
         Node<T> parent = nodeToRemoved.parent;
         if (parent == null) {
-            // Replacing the root node
+            // Remplacement du nœud racine
             root = replacementNode;
             if (root != null)
                 root.parent = null;
@@ -429,11 +426,9 @@ public class BinarySearchTree<T extends Comparable<T>> implements ITree<T> {
     }
 
     /**
-     * Validate the node for all Binary Search Tree invariants.
+     * fonction de validation de nœud pour tous les invariants de l'arbre de recherche binaire.
      * 
      * @param node
-     *            Node<T> to validate in the tree. node should NOT be NULL.
-     * @return True if the node is valid.
      */
     protected boolean validateNode(Node<T> node) {
         Node<T> lesser = node.lesser;
@@ -458,21 +453,18 @@ public class BinarySearchTree<T extends Comparable<T>> implements ITree<T> {
     }
 
     /**
-     * Get an array representation of the tree in breath first search order.
-     * 
-     * @return breath first search sorted array representing the tree.
+     * représentation matricielle de l'arbre dans le premier ordre de recherche.
      */
     public T[] getBFS() { 
         return getBFS(this.root, this.size);
     }
 
     /**
-     * Get an array representation of the tree in breath first search order.
+     * représentation matricielle de l'arbre dans le premier ordre de recherche.
      * 
-     * @param start rooted node
-     * @param size of tree rooted at start
-     * 
-     * @return breath first search sorted array representing the tree.
+     * @param start noeud racine
+     * @param size d'arbre enraciné au départ
+     *
      */
     public static <T extends Comparable<T>> T[] getBFS(Node<T> start, int size) {
         final Queue<Node<T>> queue = new ArrayDeque<Node<T>>();
@@ -494,33 +486,29 @@ public class BinarySearchTree<T extends Comparable<T>> implements ITree<T> {
     }
 
     /**
-     * Get an array representation of the tree in level order.
-     * 
-     * @return level order sorted array representing the tree.
+     * représentation en tableau de l'arbre dans l'ordre des niveaux.
      */
     public T[] getLevelOrder() {
         return getBFS();
     }
 
     /**
-     * Get an array representation of the tree in-order.
+     * représentation en tableau de l'arbre dans l'ordre.
      * 
-     * @param order of search
-     * 
-     * @return order sorted array representing the tree.
+     * @param order ordre de recherche
+     *
      */
     public T[] getDFS(DepthFirstSearchOrder order) {
         return getDFS(order, this.root, this.size);
     }
 
     /**
-     * Get an array representation of the tree in-order.
+     * Obtenez une représentation en tableau de l'arbre dans l'ordre.
      * 
-     * @param order of search
-     * @param start rooted node
-     * @param size of tree rooted at start
-     * 
-     * @return order sorted array representing the tree.
+     * @param order ordre de recherche
+     * @param start noeud racine
+     * @param size d'arbre enraciné au départ
+     *
      */
     public static <T extends Comparable<T>> T[] getDFS(DepthFirstSearchOrder order, Node<T> start, int size) {
         final Set<Node<T>> added = new HashSet<Node<T>>(2);
@@ -590,9 +578,8 @@ public class BinarySearchTree<T extends Comparable<T>> implements ITree<T> {
     }
 
     /**
-     * Get an array representation of the tree in sorted order.
-     * 
-     * @return sorted array representing the tree.
+     * Obtenez une représentation en tableau de l'arbre dans un ordre trié.
+     *
      */
     public T[] getSorted() {
         // Depth first search to traverse the tree in-order sorted.
